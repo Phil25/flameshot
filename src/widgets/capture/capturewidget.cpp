@@ -468,22 +468,22 @@ void CaptureWidget::mouseReleaseEvent(QMouseEvent *e) {
 void CaptureWidget::keyPressEvent(QKeyEvent *e) {
     if (!m_selection->isVisible()) {
         return;
-    } else if (e->key() == Qt::Key_Up
+    } else if (e->key() == Qt::Key_K
                && m_selection->geometry().top() > rect().top()) {
         m_selection->move(QPoint(m_selection->x(), m_selection->y() -1));
         m_buttonHandler->updatePosition(m_selection->geometry());
         update();
-    } else if (e->key() == Qt::Key_Down
+    } else if (e->key() == Qt::Key_J
                && m_selection->geometry().bottom() < rect().bottom()) {
         m_selection->move(QPoint(m_selection->x(), m_selection->y() +1));
         m_buttonHandler->updatePosition(m_selection->geometry());
         update();
-    } else if (e->key() == Qt::Key_Left
+    } else if (e->key() == Qt::Key_H
                && m_selection->geometry().left() > rect().left()) {
         m_selection->move(QPoint(m_selection->x() -1, m_selection->y()));
         m_buttonHandler->updatePosition(m_selection->geometry());
         update();
-    } else if (e->key() == Qt::Key_Right
+    } else if (e->key() == Qt::Key_L
                && m_selection->geometry().right() < rect().right()) {
         m_selection->move(QPoint(m_selection->x() +1, m_selection->y()));
         m_buttonHandler->updatePosition(m_selection->geometry());
@@ -729,15 +729,14 @@ void CaptureWidget::downResize() {
 }
 
 void CaptureWidget::initShortcuts() {
-    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(close()));
-    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_S), this, SLOT(saveScreenshot()));
-    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_C), this, SLOT(copyScreenshot()));
-    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Z), this, SLOT(undo()));
-    new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_Z), this, SLOT(redo()));
-    new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_Right), this, SLOT(rightResize()));
-    new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_Left), this, SLOT(leftResize()));
-    new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_Up), this, SLOT(upResize()));
-    new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_Down), this, SLOT(downResize()));
+    new QShortcut(QKeySequence(Qt::Key_Q), this, SLOT(close()));
+    new QShortcut(QKeySequence(Qt::Key_W), this, SLOT(saveScreenshot()));
+    new QShortcut(QKeySequence(Qt::Key_Y), this, SLOT(copyScreenshot()));
+    new QShortcut(QKeySequence(Qt::Key_U), this, SLOT(redo()));
+    new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_H), this, SLOT(leftResize()));
+    new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_J), this, SLOT(downResize()));
+    new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_K), this, SLOT(upResize()));
+    new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_L), this, SLOT(rightResize()));
     new QShortcut(Qt::Key_Space, this, SLOT(togglePanel()));
     new QShortcut(Qt::Key_Escape, this, SLOT(close()));
     new QShortcut(Qt::Key_Return, this, SLOT(copyScreenshot()));
