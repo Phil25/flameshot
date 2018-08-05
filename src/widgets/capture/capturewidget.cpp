@@ -732,7 +732,8 @@ void CaptureWidget::initShortcuts() {
     new QShortcut(QKeySequence(Qt::Key_Q), this, SLOT(close()));
     new QShortcut(QKeySequence(Qt::Key_W), this, SLOT(saveScreenshot()));
     new QShortcut(QKeySequence(Qt::Key_Y), this, SLOT(copyScreenshot()));
-    new QShortcut(QKeySequence(Qt::Key_U), this, SLOT(redo()));
+    new QShortcut(QKeySequence(Qt::Key_U), this, SLOT(undo()));
+	new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_R), this, SLOT(redo()));
     new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_H), this, SLOT(leftResize()));
     new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_J), this, SLOT(downResize()));
     new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_K), this, SLOT(upResize()));
